@@ -18,8 +18,8 @@
 .env.production.local
 
 # IDEs
-.idea/
-.vscode/
+/.idea
+/.vscode
 
 # misc
 .DS_Store
