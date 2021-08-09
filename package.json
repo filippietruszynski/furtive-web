@@ -1,22 +1,23 @@
 {
   "name": "furtive-web",
   "version": "1.0.0",
-  "description": "Client side of Furtive - JavaScript instant messaging service.",
   "main": "build/index.js",
   "private": true,
-  "keywords": [
-    "furtive"
-  ],
+  "description": "Client side of Furtive - JavaScript instant messaging service.",
   "author": "Filip Pietruszyński <filippietruszynski@pm.me>",
   "license": "AGPL-3.0",
   "scripts": {
     "build": "webpack --config webpack.prod.config.ts",
     "start": "webpack serve --config webpack.dev.config.ts",
+    "test": "jest",
     "lint": "npx eslint src/**/* --fix"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -25,13 +26,18 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
     "@babel/runtime": "^7.14.8",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "@types/fork-ts-checker-webpack-plugin": "^0.4.5",
+    "@types/jest": "^26.0.24",
     "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.9",
     "@types/webpack": "^5.28.0",
     "@types/webpack-dev-server": "^3.11.5",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "eslint": "^7.32.0",
@@ -43,7 +49,10 @@
     "eslint-webpack-plugin": "^3.0.1",
     "fork-ts-checker-webpack-plugin": "^6.3.2",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.6",
     "prettier": "^2.3.2",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5",
     "webpack": "^5.49.0",
