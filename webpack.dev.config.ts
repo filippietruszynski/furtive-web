@@ -1,8 +1,11 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
-import { Configuration as WebpackConfiguration, HotModuleReplacementPlugin } from "webpack";
+import {
+  Configuration as WebpackConfiguration,
+  HotModuleReplacementPlugin,
+} from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 
 interface Configuration extends WebpackConfiguration {
@@ -42,7 +45,7 @@ const config: Configuration = {
     }),
     new HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      async: false
+      async: false,
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
@@ -54,7 +57,7 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 3000,
     open: true,
-    hot: true
+    hot: true,
   },
 };
 
