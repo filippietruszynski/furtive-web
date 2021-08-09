@@ -1,11 +1,11 @@
 # dependencies
-/node_modules
+node_modules/
 
 # testing
-/coverage
+coverage/
 
 # production
-/build
+build/
 
 # environment
 .env
@@ -18,11 +18,12 @@
 .env.production.local
 
 # IDEs
-/.idea
-/.vscode
+.idea/
+.vscode/
 
 # misc
-.DS_Store
+.DS_Store/
+misc/
 
 npm-debug.log*
 yarn-debug.log*
