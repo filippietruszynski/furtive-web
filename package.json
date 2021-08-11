@@ -10,7 +10,7 @@
     "test": "jest",
     "type-check": "tsc --noEmit",
     "lint": "npx eslint src/ --fix",
-    "pre-commit": "npm run type-check && npm run lint"
+    "pre-commit": "npm run lint && npm run type-check"
   },
   "dependencies": {
     "axios": "^0.21.1",
