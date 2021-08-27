@@ -4,11 +4,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "react-hooks",
-    "html"
-  ],
+  "plugins": ["@typescript-eslint", "react-hooks", "html"],
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -17,21 +13,6 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "sort-imports": [
-      "warn",
-      {
-        "ignoreCase": false,
-        "ignoreDeclarationSort": false,
-        "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": [
-          "all",
-          "single",
-          "multiple",
-          "none"
-        ],
-        "allowSeparatedGroups": true
-      }
-    ],
     "react/prop-types": "off"
   },
   "settings": {
