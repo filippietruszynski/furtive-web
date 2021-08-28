@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
-import DummyPrivateView from "./views/DummyPrivateView";
+import DummyPrivateView from "./components/DummyPrivateView";
 import PrivateRoute from "./components/PrivateRoute";
 
 import { IPrivateRouteProps } from "./components/PrivateRoute/PrivateRoute";
