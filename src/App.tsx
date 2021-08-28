@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
 
-import Signup from "./components/Signup";
-import Login from "./components/Login";
+import DummyPrivateView from "./views/DummyPrivateView";
+import PrivateRoute from "./components/PrivateRoute";
 
-import { login, signup } from "./api/requests";
+import { IPrivateRouteProps } from "./components/PrivateRoute/PrivateRoute";
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [redirectPath, setRedirectPath] = useState<string>("/");
+
+  const defaultPrivateRouteProps: IPrivateRouteProps = {
+    isLoggedIn: isLoggedIn,
+    logInPath: "/login",
+    redirectPath: redirectPath,
+    setRedirectPath: setRedirectPath,
+  };
+
   return (
     <>
-      <Signup signup={signup} />
-      <Login login={login} />
+      IS LOGGED IN: {`${isLoggedIn}`}
+      <br />
+      REDIRECT PATH: {redirectPath && `"${redirectPath}"`}
+      <BrowserRouter>
+        <Switch>
+          <PrivateRoute
+            {...defaultPrivateRouteProps}
+            path="/dpv"
+            component={DummyPrivateView}
+            exact
+          />
+        </Switch>
+      </BrowserRouter>
     </>
   );
 };

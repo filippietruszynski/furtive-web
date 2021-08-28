@@ -1,16 +1,11 @@
-import React from "react";
 import * as Yup from "yup";
-import { AxiosResponse } from "axios";
+import React from "react";
 import { Formik, FormikHelpers } from "formik";
 
-import { ILoginRequest } from "../../api/requests";
+import { ILogInUserRequest } from "../../store/user/types";
 
-interface ILoginProps {
-  login: (request: ILoginRequest) => Promise<AxiosResponse<any>>;
-}
-
-const Login: React.FC<ILoginProps> = ({ login }) => {
-  const initialValues: ILoginRequest = {
+const LogIn: React.FC = () => {
+  const initialValues: ILogInUserRequest = {
     email: "",
     password: "",
   };
@@ -21,16 +16,12 @@ const Login: React.FC<ILoginProps> = ({ login }) => {
   });
 
   const onSubmit = async (
-    values: ILoginRequest,
-    { resetForm, setSubmitting }: FormikHelpers<ILoginRequest>
+    values: ILogInUserRequest,
+    { resetForm, setSubmitting }: FormikHelpers<ILogInUserRequest>
   ) => {
-    try {
-      await login(values);
-      resetForm();
-      setSubmitting(false);
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(`LOG IN SUBMIT: ${values}`);
+    resetForm();
+    setSubmitting(false);
   };
 
   return (
@@ -76,4 +67,4 @@ const Login: React.FC<ILoginProps> = ({ login }) => {
   );
 };
 
-export default Login;
+export default LogIn;

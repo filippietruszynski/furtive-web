@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import { AxiosResponse } from "axios";
+import React from "react";
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import { ISignupRequest } from "../../api/requests";
+import { ISignUpUserRequest } from "../../store/user/types";
 
-interface ISignupProps {
-  signup: (request: ISignupRequest) => Promise<AxiosResponse<any>>;
-}
-
-const Signup: React.FC<ISignupProps> = ({ signup }) => {
-  const initialValues: ISignupRequest = {
+const SignUp: React.FC = () => {
+  const initialValues: ISignUpUserRequest = {
     email: "",
     password: "",
   };
@@ -21,16 +16,12 @@ const Signup: React.FC<ISignupProps> = ({ signup }) => {
   });
 
   const onSubmit = async (
-    values: ISignupRequest,
-    { resetForm, setSubmitting }: FormikHelpers<ISignupRequest>
+    values: ISignUpUserRequest,
+    { resetForm, setSubmitting }: FormikHelpers<ISignUpUserRequest>
   ) => {
-    try {
-      await signup(values);
-      resetForm();
-      setSubmitting(false);
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(`SIGN UP SUBMIT: ${values}`);
+    resetForm();
+    setSubmitting(false);
   };
 
   return (
@@ -76,4 +67,4 @@ const Signup: React.FC<ISignupProps> = ({ signup }) => {
   );
 };
 
-export default Signup;
+export default SignUp;
