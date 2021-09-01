@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
-import user from "./auth/reducer";
+import user from "./user/reducer";
 
 const rootReducer = combineReducers({
   user,

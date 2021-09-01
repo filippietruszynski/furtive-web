@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { IUserState } from "./auth/types";
+import { IUserState } from "./user/types";
 
 export interface IRootState {
   user: IUserState;

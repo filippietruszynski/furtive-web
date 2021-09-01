@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import React from "react";
 import { Formik, FormikHelpers } from "formik";
 
-import { ILogInUserRequest } from "../../store/auth/types";
+import { ILogInUserRequest } from "../../store/user/types";
 
 const LogIn: React.FC = () => {
   const initialValues: ILogInUserRequest = {
