@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "../../utils/axios-instance";
 
 import {
@@ -9,12 +8,12 @@ import {
 
 export const signUpUserRequest = (
   request: ISignUpUserRequest
-): ReturnType<typeof axios.post> => {
+): ReturnType<typeof axiosInstance.post> => {
   return axiosInstance.post("/signup", request);
 };
 
 export const logInUserRequest = (
   request: ILogInUserRequest
-): ReturnType<typeof axios.post> => {
+): ReturnType<typeof axiosInstance.post> => {
   return axiosInstance.post<ILogInUserResponse>("/login", request);
 };
