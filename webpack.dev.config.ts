@@ -42,7 +42,6 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
-      favicon: "src/favicon.ico",
     }),
     new HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({
