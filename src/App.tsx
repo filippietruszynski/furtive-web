@@ -2,27 +2,26 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
 import DummyPrivateView from "./components/DummyPrivateView";
+import LogIn from "./components/LogIn";
 import PrivateRoute from "./components/PrivateRoute";
 
 import { IPrivateRouteProps } from "./components/PrivateRoute/PrivateRoute";
+import SignUp from "./components/SignUp";
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [redirectPath, setRedirectPath] = useState<string>("/");
-
-  const defaultPrivateRouteProps: IPrivateRouteProps = {
-    isLoggedIn: isLoggedIn,
-    logInPath: "/login",
-    redirectPath: redirectPath,
-    setRedirectPath: setRedirectPath,
-  };
+  // const defaultPrivateRouteProps: IPrivateRouteProps = {
+  //   isLoggedIn: isLoggedIn,
+  //   logInPath: "/login",
+  //   redirectPath: redirectPath,
+  //   setRedirectPath: setRedirectPath,
+  // };
 
   return (
     <>
-      IS LOGGED IN: {`${isLoggedIn}`}
-      <br />
-      REDIRECT PATH: {redirectPath && `"${redirectPath}"`}
-      <BrowserRouter>
+      <LogIn />
+      <SignUp />
+
+      {/* <BrowserRouter>
         <Switch>
           <PrivateRoute
             {...defaultPrivateRouteProps}
@@ -31,7 +30,7 @@ const App: React.FC = () => {
             exact
           />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 };
