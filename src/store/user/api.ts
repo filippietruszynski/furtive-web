@@ -6,14 +6,10 @@ import {
   ILogInUserResponse,
 } from "./types";
 
-export const signUpUserRequest = (
-  request: ISignUpUserRequest
-): ReturnType<typeof axiosInstance.post> => {
+export const signUpUserRequest = (request: ISignUpUserRequest) => {
   return axiosInstance.post("/signup", request);
 };
 
-export const logInUserRequest = (
-  request: ILogInUserRequest
-): ReturnType<typeof axiosInstance.post> => {
+export const logInUserRequest = (request: ILogInUserRequest) => {
   return axiosInstance.post<ILogInUserResponse>("/login", request);
 };
