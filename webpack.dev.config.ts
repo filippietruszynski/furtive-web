@@ -7,7 +7,7 @@ import {
   HotModuleReplacementPlugin,
 } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
-
+import Dotenv from "dotenv-webpack";
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
@@ -40,6 +40,7 @@ const config: Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
@@ -56,7 +57,7 @@ const config: Configuration = {
     contentBase: path.join(__dirname, "build"),
     historyApiFallback: true,
     port: 3000,
-    open: true,
+    open: false,
     hot: true,
   },
 };

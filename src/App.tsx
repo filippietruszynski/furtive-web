@@ -18,6 +18,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      {process.env.SZOT}
       <LogIn />
       <SignUp />
 
