@@ -1,6 +1,6 @@
 import { IEnvConfig } from "./types";
 
-const devConfig: IEnvConfig = {
+const testConfig: IEnvConfig = {
   app: {
     host: process.env.TEST_APP_HOST || "localhost",
     port: parseInt(<string>process.env.TEST_APP_PORT, 10) || 3000,
@@ -11,4 +11,4 @@ const devConfig: IEnvConfig = {
   },
 };
 
-export default devConfig;
+export default testConfig;

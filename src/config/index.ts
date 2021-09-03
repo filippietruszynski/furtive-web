@@ -28,6 +28,7 @@ switch (env) {
     break;
   default:
     envConfig = devConfig;
+    console.log(`NODE_ENV wasn't declared! Using DEVELOPMENT config!`);
 }
 
 const config: IConfig = merge(baseConfig, envConfig);
