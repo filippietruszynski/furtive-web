@@ -1,10 +1,10 @@
 import { IRootState } from "../types";
-import { IUser, IAuthState } from "./types";
+import { ICurrentUser, IAuthState } from "./types";
 
 export const selectAuthState = (state: IRootState): IAuthState => state.auth;
 
-export const selectUser = (state: IRootState): IUser | null => {
-  return selectAuthState(state).user;
+export const selectUser = (state: IRootState): ICurrentUser | null => {
+  return selectAuthState(state).currentUser;
 };
 
 export const selectError = (state: IRootState): boolean => {

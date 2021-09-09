@@ -1,12 +1,12 @@
 /* AUTH */
 
-export interface IUser {
+export interface ICurrentUser {
   email: string | null;
   token: string | null;
 }
 
 export interface IAuthState {
-  user: IUser | null;
+  currentUser: ICurrentUser | null;
   error: boolean;
   loading: boolean;
   isLoggedIn: boolean;
@@ -46,7 +46,7 @@ export interface ILogInUserRequestAction extends IAuthAction {
 
 export interface ILogInUserSuccessAction extends IAuthAction {
   type: AuthActionType.LOGIN_USER_SUCCESS;
-  payload: IUser;
+  payload: ICurrentUser;
 }
 
 export interface ILogInUserFailureAction extends IAuthAction {
@@ -69,4 +69,4 @@ export interface ILogInUserRequest {
   password: string;
 }
 
-export type ILogInUserResponse = Partial<IUser>;
+export type ILogInUserResponse = Partial<ICurrentUser>;

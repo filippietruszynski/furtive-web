@@ -6,7 +6,7 @@ import {
 } from "./types";
 
 export const initialState: IAuthState = {
-  user: null,
+  currentUser: null,
   error: false,
   loading: false,
   isLoggedIn: false,
@@ -50,7 +50,7 @@ const reducer: (
     case AuthActionType.LOGIN_USER_SUCCESS:
       return {
         ...state,
-        user: (action as ILogInUserSuccessAction).payload,
+        currentUser: (action as ILogInUserSuccessAction).payload,
         error: false,
         loading: false,
         isLoggedIn: true,
@@ -58,7 +58,7 @@ const reducer: (
     case AuthActionType.LOGIN_USER_FAILURE:
       return {
         ...state,
-        user: null,
+        currentUser: null,
         error: true,
         loading: false,
         isLoggedIn: false,
@@ -66,7 +66,7 @@ const reducer: (
     case AuthActionType.LOGOUT_USER: {
       return {
         ...state,
-        user: null,
+        currentUser: null,
         error: false,
         loading: true,
         isLoggedIn: false,

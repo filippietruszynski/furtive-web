@@ -2,7 +2,7 @@ import {
   ILogInUserRequestAction,
   AuthActionType,
   ILogInUserSuccessAction,
-  IUser,
+  ICurrentUser,
   ILogInUserFailureAction,
   ILogInUserResponse,
   ILogOutUserAction,
@@ -39,7 +39,7 @@ export const logInUserSuccessAction: (
   response: ILogInUserResponse
 ) => ILogInUserSuccessAction = (response: ILogInUserResponse) => {
   return {
-    payload: response as IUser,
+    payload: response as ICurrentUser,
     type: AuthActionType.LOGIN_USER_SUCCESS,
   };
 };
