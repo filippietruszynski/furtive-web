@@ -1,11 +1,11 @@
 import {
-  IUserState,
-  IUserAction,
-  UserActionType,
+  IAuthState,
+  IAuthAction,
+  AuthActionType,
   ILogInUserSuccessAction,
 } from "./types";
 
-export const initialState: IUserState = {
+export const initialState: IAuthState = {
   user: null,
   error: false,
   loading: false,
@@ -13,41 +13,41 @@ export const initialState: IUserState = {
 };
 
 const reducer: (
-  state: IUserState | undefined,
-  action: IUserAction
-) => IUserState = (
-  state: IUserState | undefined = initialState,
-  action: IUserAction
+  state: IAuthState | undefined,
+  action: IAuthAction
+) => IAuthState = (
+  state: IAuthState | undefined = initialState,
+  action: IAuthAction
 ) => {
   switch (action.type) {
-    case UserActionType.SIGNUP_USER_START:
+    case AuthActionType.SIGNUP_USER_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
       };
-    case UserActionType.SIGNUP_USER_SUCCESS:
+    case AuthActionType.SIGNUP_USER_SUCCESS:
       return {
         ...state,
         error: false,
         loading: false,
         isLoggedIn: false,
       };
-    case UserActionType.SIGNUP_USER_FAILURE:
+    case AuthActionType.SIGNUP_USER_FAILURE:
       return {
         ...state,
-        error: false,
+        error: true,
         loading: false,
         isLoggedIn: false,
       };
-    case UserActionType.LOGIN_USER_START:
+    case AuthActionType.LOGIN_USER_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
         isLoggedIn: false,
       };
-    case UserActionType.LOGIN_USER_SUCCESS:
+    case AuthActionType.LOGIN_USER_SUCCESS:
       return {
         ...state,
         user: (action as ILogInUserSuccessAction).payload,
@@ -55,7 +55,7 @@ const reducer: (
         loading: false,
         isLoggedIn: true,
       };
-    case UserActionType.LOGIN_USER_FAILURE:
+    case AuthActionType.LOGIN_USER_FAILURE:
       return {
         ...state,
         user: null,
@@ -63,7 +63,7 @@ const reducer: (
         loading: false,
         isLoggedIn: false,
       };
-    case UserActionType.LOGOUT_USER: {
+    case AuthActionType.LOGOUT_USER: {
       return {
         ...state,
         user: null,

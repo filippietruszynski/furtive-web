@@ -1,10 +1,10 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { IUserState } from "./auth/types";
+import { IAuthState } from "./auth/types";
 
 export interface IRootState {
-  user: IUserState;
+  auth: IAuthState;
 }
 
 export type ApiAction<T extends AnyAction> = ThunkAction<

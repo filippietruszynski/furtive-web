@@ -1,37 +1,37 @@
 import {
-  ILogInUserStartAction,
-  UserActionType,
+  ILogInUserRequestAction,
+  AuthActionType,
   ILogInUserSuccessAction,
   IUser,
   ILogInUserFailureAction,
   ILogInUserResponse,
   ILogOutUserAction,
-  ISignUpUserStartAction,
+  ISignUpUserRequestAction,
   ISignUpUserSuccessAction,
   ISignUpUserFailureAction,
 } from "./types";
 
-export const signUpUserStartAction: () => ISignUpUserStartAction = () => {
+export const signUpUserRequestAction: () => ISignUpUserRequestAction = () => {
   return {
-    type: UserActionType.SIGNUP_USER_START,
+    type: AuthActionType.SIGNUP_USER_REQUEST,
   };
 };
 
 export const signUpUserSuccessAction: () => ISignUpUserSuccessAction = () => {
   return {
-    type: UserActionType.SIGNUP_USER_SUCCESS,
+    type: AuthActionType.SIGNUP_USER_SUCCESS,
   };
 };
 
 export const signUpUserFailureAction: () => ISignUpUserFailureAction = () => {
   return {
-    type: UserActionType.SIGNUP_USER_FAILURE,
+    type: AuthActionType.SIGNUP_USER_FAILURE,
   };
 };
 
-export const logInUserStartAction: () => ILogInUserStartAction = () => {
+export const logInUserRequestAction: () => ILogInUserRequestAction = () => {
   return {
-    type: UserActionType.LOGIN_USER_START,
+    type: AuthActionType.LOGIN_USER_REQUEST,
   };
 };
 
@@ -40,18 +40,18 @@ export const logInUserSuccessAction: (
 ) => ILogInUserSuccessAction = (response: ILogInUserResponse) => {
   return {
     payload: response as IUser,
-    type: UserActionType.LOGIN_USER_SUCCESS,
+    type: AuthActionType.LOGIN_USER_SUCCESS,
   };
 };
 
 export const logInUserFailureAction: () => ILogInUserFailureAction = () => {
   return {
-    type: UserActionType.LOGIN_USER_FAILURE,
+    type: AuthActionType.LOGIN_USER_FAILURE,
   };
 };
 
 export const logOutUserAction: () => ILogOutUserAction = () => {
   return {
-    type: UserActionType.LOGOUT_USER,
+    type: AuthActionType.LOGOUT_USER,
   };
 };
