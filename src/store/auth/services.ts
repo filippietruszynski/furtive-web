@@ -1,60 +1,58 @@
-import { logInUserRequest, signUpUserRequest } from "./api";
+import { logInRequest, signUpRequest } from "./api";
 import {
-  logInUserFailureAction,
-  logInUserRequestAction,
-  logInUserSuccessAction,
+  logInFailureAction,
+  logInRequestAction,
+  logInSuccessAction,
   logOutUserAction,
-  signUpUserFailureAction,
-  signUpUserRequestAction,
-  signUpUserSuccessAction,
+  signUpFailureAction,
+  signUpRequestAction,
+  signUpSuccessAction,
 } from "./actions";
 
 import { ApiAction } from "../types";
 import {
-  ILogInUserFailureAction,
-  ILogInUserRequest,
-  ILogInUserRequestAction,
-  ILogInUserSuccessAction,
+  ILogInFailureAction,
+  ILogInRequest,
+  ILogInRequestAction,
+  ILogInSuccessAction,
   ILogOutUserAction,
-  ISignUpUserFailureAction,
-  ISignUpUserRequest,
-  ISignUpUserRequestAction,
-  ISignUpUserSuccessAction,
+  ISignUpFailureAction,
+  ISignUpRequest,
+  ISignUpRequestAction,
+  ISignUpSuccessAction,
 } from "./types";
 
-export const signUpUser =
+export const signUp =
   (
-    request: ISignUpUserRequest
+    request: ISignUpRequest
   ): ApiAction<
-    | ISignUpUserRequestAction
-    | ISignUpUserSuccessAction
-    | ISignUpUserFailureAction
+    ISignUpRequestAction | ISignUpSuccessAction | ISignUpFailureAction
   > =>
   async (dispatch) => {
-    dispatch(signUpUserRequestAction());
+    dispatch(signUpRequestAction());
 
     try {
-      await signUpUserRequest(request);
-      dispatch(signUpUserSuccessAction());
+      await signUpRequest(request);
+      dispatch(signUpSuccessAction());
     } catch (error) {
-      dispatch(signUpUserFailureAction());
+      dispatch(signUpFailureAction());
     }
   };
 
-export const logInUser =
+export const logIn =
   (
-    request: ILogInUserRequest
+    request: ILogInRequest
   ): ApiAction<
-    ILogInUserRequestAction | ILogInUserSuccessAction | ILogInUserFailureAction
+    ILogInRequestAction | ILogInSuccessAction | ILogInFailureAction
   > =>
   async (dispatch) => {
-    dispatch(logInUserRequestAction());
+    dispatch(logInRequestAction());
 
     try {
-      const { data } = await logInUserRequest(request);
-      dispatch(logInUserSuccessAction(data));
+      const { data } = await logInRequest(request);
+      dispatch(logInSuccessAction(data));
     } catch (error) {
-      dispatch(logInUserFailureAction());
+      dispatch(logInFailureAction());
     }
   };
 

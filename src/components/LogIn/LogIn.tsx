@@ -3,13 +3,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 
-import { ILogInUserRequest } from "../../store/auth/types";
-import { logInUser } from "../../store/auth/services";
+import { ILogInRequest } from "../../store/auth/types";
+import { logIn } from "../../store/auth/services";
 
 const LogIn: React.FC = () => {
   const dispatch = useDispatch();
 
-  const initialValues: ILogInUserRequest = {
+  const initialValues: ILogInRequest = {
     email: "",
     password: "",
   };
@@ -20,10 +20,10 @@ const LogIn: React.FC = () => {
   });
 
   const onSubmit = async (
-    values: ILogInUserRequest,
-    { resetForm, setSubmitting }: FormikHelpers<ILogInUserRequest>
+    values: ILogInRequest,
+    { resetForm, setSubmitting }: FormikHelpers<ILogInRequest>
   ) => {
-    dispatch(logInUser(values));
+    dispatch(logIn(values));
     resetForm();
     setSubmitting(false);
   };

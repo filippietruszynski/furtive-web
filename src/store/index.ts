@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import throttle from "lodash/throttle";
 
 import auth from "./auth/reducer";
+import user from "./user/reducer";
 
 import {
   loadStateFromLocalStorage,
@@ -12,6 +13,7 @@ import {
 
 const rootReducer = combineReducers({
   auth,
+  user,
 });
 
 const middleware = [thunk];

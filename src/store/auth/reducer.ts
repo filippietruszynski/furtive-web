@@ -2,7 +2,7 @@ import {
   IAuthState,
   IAuthAction,
   AuthActionType,
-  ILogInUserSuccessAction,
+  ILogInSuccessAction,
 } from "./types";
 
 export const initialState: IAuthState = {
@@ -20,42 +20,42 @@ const reducer: (
   action: IAuthAction
 ) => {
   switch (action.type) {
-    case AuthActionType.SIGNUP_USER_REQUEST:
+    case AuthActionType.SIGNUP_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
       };
-    case AuthActionType.SIGNUP_USER_SUCCESS:
+    case AuthActionType.SIGNUP_SUCCESS:
       return {
         ...state,
         error: false,
         loading: false,
         isLoggedIn: false,
       };
-    case AuthActionType.SIGNUP_USER_FAILURE:
+    case AuthActionType.SIGNUP_FAILURE:
       return {
         ...state,
         error: true,
         loading: false,
         isLoggedIn: false,
       };
-    case AuthActionType.LOGIN_USER_REQUEST:
+    case AuthActionType.LOGIN_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
         isLoggedIn: false,
       };
-    case AuthActionType.LOGIN_USER_SUCCESS:
+    case AuthActionType.LOGIN_SUCCESS:
       return {
         ...state,
-        currentUser: (action as ILogInUserSuccessAction).payload,
+        currentUser: (action as ILogInSuccessAction).payload,
         error: false,
         loading: false,
         isLoggedIn: true,
       };
-    case AuthActionType.LOGIN_USER_FAILURE:
+    case AuthActionType.LOGIN_FAILURE:
       return {
         ...state,
         currentUser: null,
@@ -63,7 +63,7 @@ const reducer: (
         loading: false,
         isLoggedIn: false,
       };
-    case AuthActionType.LOGOUT_USER: {
+    case AuthActionType.LOGOUT: {
       return {
         ...state,
         currentUser: null,
