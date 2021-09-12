@@ -12,7 +12,7 @@ export const initialState: IAuthState = {
   isLoggedIn: false,
 };
 
-const reducer: (
+const authReducer: (
   state: IAuthState | undefined,
   action: IAuthAction
 ) => IAuthState = (
@@ -77,4 +77,4 @@ const reducer: (
   }
 };
 
-export default reducer;
+export default authReducer;

@@ -12,7 +12,7 @@ export const initialState: IUserState = {
   loading: false,
 };
 
-const reducer: (
+const userReducer: (
   state: IUserState | undefined,
   action: IUserAction
 ) => IUserState = (
@@ -63,4 +63,4 @@ const reducer: (
   }
 };
 
-export default reducer;
+export default userReducer;
