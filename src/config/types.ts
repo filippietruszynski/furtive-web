@@ -1,6 +1,6 @@
 interface IServer {
-  host: string;
-  port: string;
+  host?: string;
+  port?: number;
   hasPort: boolean;
 }
 
