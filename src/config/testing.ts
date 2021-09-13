@@ -1,13 +1,10 @@
 import { IEnvConfig } from "./types";
 
 const testConfig: IEnvConfig = {
-  app: {
-    host: process.env.TEST_APP_HOST || "localhost",
-    port: parseInt(<string>process.env.TEST_APP_PORT, 10) || 3000,
-  },
   server: {
-    host: process.env.TEST_SERVER_HOST || "localhost",
-    port: parseInt(<string>process.env.TEST_SERVER_PORT, 10) || 5000,
+    host: process.env.TEST_SERVER_HOST || "",
+    port: process.env.TEST_SERVER_PORT || "",
+    hasPort: Boolean(process.env.TEST_SERVER_PORT),
   },
 };
 

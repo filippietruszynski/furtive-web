@@ -1,22 +1,18 @@
-interface IApp {
-  host: string;
-  port: number;
-}
-
 interface IServer {
   host: string;
-  port: number;
+  port: string;
+  hasPort: boolean;
 }
 
 export interface IBaseConfig {
   env: string;
   isDev: boolean;
   isTest: boolean;
+  isStage: boolean;
   isProd: boolean;
 }
 
 export interface IEnvConfig {
-  app: IApp;
   server: IServer;
 }
 
