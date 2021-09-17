@@ -9,7 +9,7 @@ import {
   ISignUpRequestAction,
   ISignUpSuccessAction,
   ISignUpFailureAction,
-} from "./types";
+} from "../types/auth.types";
 
 export const signUpRequestAction: () => ISignUpRequestAction = () => {
   return {

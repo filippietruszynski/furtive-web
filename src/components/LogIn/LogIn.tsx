@@ -3,8 +3,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 
-import { ILogInRequest } from "../../store/auth/types";
-import { logIn } from "../../store/auth/services";
+import { ILogInRequest } from "../../store/types/auth.types";
+import { logIn } from "../../store/services/auth.services";
 
 const LogIn: React.FC = () => {
   const dispatch = useDispatch();

@@ -9,7 +9,7 @@ import {
   IUpdateUserSuccessAction,
   IUser,
   UserActionType,
-} from "./types";
+} from "../types/user.types";
 
 export const getUserRequestAction: () => IGetUserRequestAction = () => {
   return {

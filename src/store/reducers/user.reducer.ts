@@ -4,7 +4,7 @@ import {
   IUserAction,
   IUserState,
   UserActionType,
-} from "./types";
+} from "../types/user.types";
 
 export const initialState: IUserState = {
   user: null,

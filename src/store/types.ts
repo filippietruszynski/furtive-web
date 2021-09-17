@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { IAuthState } from "./auth/types";
+import { IAuthState } from "./types/auth.types";
 
 export interface IRootState {
   auth: IAuthState;

@@ -7,8 +7,8 @@ import {
   updateUserFailureAction,
   updateUserRequestAction,
   updateUserSuccessAction,
-} from "./actions";
-import { getUserRequest, updateUserRequest } from "./api";
+} from "../actions/user.actions";
+import { getUserRequest, updateUserRequest } from "../api/user.api";
 
 import { ApiAction } from "../types";
 import {
@@ -19,7 +19,7 @@ import {
   IUpdateUserRequest,
   IUpdateUserRequestAction,
   IUpdateUserSuccessAction,
-} from "./types";
+} from "../types/user.types";
 
 export const getUser =
   (
