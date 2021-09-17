@@ -3,8 +3,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import throttle from "lodash/throttle";
 
-import auth from "./auth/reducer";
-import user from "./user/reducer";
+import auth from "./reducers/auth.reducer";
+import user from "./reducers/user.reducer";
 
 import {
   loadStateFromLocalStorage,

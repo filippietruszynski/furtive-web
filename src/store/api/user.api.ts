@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 
 import axiosInstance from "../../utils/axios-instance";
 
-import { IUpdateUserRequest } from "./types";
+import { IUpdateUserRequest } from "../types/user.types";
 
 export const getUserRequest = (config: AxiosRequestConfig) => {
   return axiosInstance.get("/api/user", config);

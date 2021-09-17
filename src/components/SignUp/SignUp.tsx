@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import { signUp } from "../../store/auth/services";
+import { signUp } from "../../store/services/auth.services";
 
-import { ISignUpRequest } from "../../store/auth/types";
+import { ISignUpRequest } from "../../store/types/auth.types";
 
 const SignUp: React.FC = () => {
   const dispatch = useDispatch();

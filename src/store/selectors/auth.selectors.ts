@@ -1,5 +1,5 @@
 import { IRootState } from "../types";
-import { ICurrentUser, IAuthState } from "./types";
+import { ICurrentUser, IAuthState } from "../types/auth.types";
 
 export const selectAuthState = (state: IRootState): IAuthState => state.auth;
 

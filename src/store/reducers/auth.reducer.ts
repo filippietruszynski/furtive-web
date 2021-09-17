@@ -3,7 +3,7 @@ import {
   IAuthAction,
   AuthActionType,
   ILogInSuccessAction,
-} from "./types";
+} from "../types/auth.types";
 
 export const initialState: IAuthState = {
   currentUser: null,

@@ -1,4 +1,4 @@
-import { logInRequest, signUpRequest } from "./api";
+import { logInRequest, signUpRequest } from "../api/auth.api";
 import {
   logInFailureAction,
   logInRequestAction,
@@ -7,7 +7,7 @@ import {
   signUpFailureAction,
   signUpRequestAction,
   signUpSuccessAction,
-} from "./actions";
+} from "../actions/auth.actions";
 
 import { ApiAction } from "../types";
 import {
@@ -20,7 +20,7 @@ import {
   ISignUpRequest,
   ISignUpRequestAction,
   ISignUpSuccessAction,
-} from "./types";
+} from "../types/auth.types";
 
 export const signUp =
   (
