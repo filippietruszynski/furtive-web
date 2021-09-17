@@ -1,11 +1,19 @@
+/* PROCESS */
+
+export interface IProcessEnv {
+  [key: string]: string | undefined;
+}
+
+/* CONFIG */
+
 interface IServer {
-  host?: string;
-  port?: number;
+  host: string;
+  port: number;
   hasPort: boolean;
 }
 
 export interface IBaseConfig {
-  env: string;
+  nodeEnv: string;
   isDev: boolean;
   isTest: boolean;
   isStage: boolean;
