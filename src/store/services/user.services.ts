@@ -1,10 +1,10 @@
 import { AxiosRequestConfig } from "axios";
 
 import {
-  getUserFailureAction,
+  getUserErrorAction,
   getUserRequestAction,
   getUserSuccessAction,
-  updateUserFailureAction,
+  updateUserErrorAction,
   updateUserRequestAction,
   updateUserSuccessAction,
 } from "../actions/user.actions";
@@ -12,10 +12,10 @@ import { getUserRequest, updateUserRequest } from "../api/user.api";
 
 import { ApiAction } from "../types";
 import {
-  IGetUserFailureAction,
+  IGetUserErrorAction,
   IGetUserRequestAction,
   IGetUserSuccessAction,
-  IUpdateUserFailureAction,
+  IUpdateUserErrorAction,
   IUpdateUserRequest,
   IUpdateUserRequestAction,
   IUpdateUserSuccessAction,
@@ -25,7 +25,7 @@ export const getUser =
   (
     config: AxiosRequestConfig
   ): ApiAction<
-    IGetUserRequestAction | IGetUserSuccessAction | IGetUserFailureAction
+    IGetUserRequestAction | IGetUserSuccessAction | IGetUserErrorAction
   > =>
   async (dispatch) => {
     dispatch(getUserRequestAction());
@@ -34,7 +34,7 @@ export const getUser =
       const { data } = await getUserRequest(config);
       dispatch(getUserSuccessAction(data));
     } catch (error) {
-      dispatch(getUserFailureAction());
+      dispatch(getUserErrorAction());
     }
   };
 
@@ -43,9 +43,7 @@ export const updateUser =
     request: IUpdateUserRequest,
     config: AxiosRequestConfig
   ): ApiAction<
-    | IUpdateUserRequestAction
-    | IUpdateUserSuccessAction
-    | IUpdateUserFailureAction
+    IUpdateUserRequestAction | IUpdateUserSuccessAction | IUpdateUserErrorAction
   > =>
   async (dispatch) => {
     dispatch(updateUserRequestAction());
@@ -54,6 +52,6 @@ export const updateUser =
       const { data } = await updateUserRequest(request, config);
       dispatch(updateUserSuccessAction(data));
     } catch (error) {
-      dispatch(updateUserFailureAction());
+      dispatch(updateUserErrorAction());
     }
   };

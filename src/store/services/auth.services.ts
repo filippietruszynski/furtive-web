@@ -1,22 +1,22 @@
 import { logInRequest, signUpRequest } from "../api/auth.api";
 import {
-  logInFailureAction,
+  logInErrorAction,
   logInRequestAction,
   logInSuccessAction,
   logOutUserAction,
-  signUpFailureAction,
+  signUpErrorAction,
   signUpRequestAction,
   signUpSuccessAction,
 } from "../actions/auth.actions";
 
 import { ApiAction } from "../types";
 import {
-  ILogInFailureAction,
+  ILogInErrorAction,
   ILogInRequest,
   ILogInRequestAction,
   ILogInSuccessAction,
   ILogOutUserAction,
-  ISignUpFailureAction,
+  ISignUpErrorAction,
   ISignUpRequest,
   ISignUpRequestAction,
   ISignUpSuccessAction,
@@ -26,7 +26,7 @@ export const signUp =
   (
     request: ISignUpRequest
   ): ApiAction<
-    ISignUpRequestAction | ISignUpSuccessAction | ISignUpFailureAction
+    ISignUpRequestAction | ISignUpSuccessAction | ISignUpErrorAction
   > =>
   async (dispatch) => {
     dispatch(signUpRequestAction());
@@ -35,16 +35,14 @@ export const signUp =
       await signUpRequest(request);
       dispatch(signUpSuccessAction());
     } catch (error) {
-      dispatch(signUpFailureAction());
+      dispatch(signUpErrorAction());
     }
   };
 
 export const logIn =
   (
     request: ILogInRequest
-  ): ApiAction<
-    ILogInRequestAction | ILogInSuccessAction | ILogInFailureAction
-  > =>
+  ): ApiAction<ILogInRequestAction | ILogInSuccessAction | ILogInErrorAction> =>
   async (dispatch) => {
     dispatch(logInRequestAction());
 
@@ -52,7 +50,7 @@ export const logIn =
       const { data } = await logInRequest(request);
       dispatch(logInSuccessAction(data));
     } catch (error) {
-      dispatch(logInFailureAction());
+      dispatch(logInErrorAction());
     }
   };
 

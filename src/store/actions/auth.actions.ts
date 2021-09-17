@@ -3,12 +3,12 @@ import {
   AuthActionType,
   ILogInSuccessAction,
   ICurrentUser,
-  ILogInFailureAction,
+  ILogInErrorAction,
   ILogInResponse,
   ILogOutUserAction,
   ISignUpRequestAction,
   ISignUpSuccessAction,
-  ISignUpFailureAction,
+  ISignUpErrorAction,
 } from "../types/auth.types";
 
 export const signUpRequestAction: () => ISignUpRequestAction = () => {
@@ -23,9 +23,9 @@ export const signUpSuccessAction: () => ISignUpSuccessAction = () => {
   };
 };
 
-export const signUpFailureAction: () => ISignUpFailureAction = () => {
+export const signUpErrorAction: () => ISignUpErrorAction = () => {
   return {
-    type: AuthActionType.SIGNUP_FAILURE,
+    type: AuthActionType.SIGNUP_ERROR,
   };
 };
 
@@ -44,9 +44,9 @@ export const logInSuccessAction: (
   };
 };
 
-export const logInFailureAction: () => ILogInFailureAction = () => {
+export const logInErrorAction: () => ILogInErrorAction = () => {
   return {
-    type: AuthActionType.LOGIN_FAILURE,
+    type: AuthActionType.LOGIN_ERROR,
   };
 };
 

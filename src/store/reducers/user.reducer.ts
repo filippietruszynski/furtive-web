@@ -33,7 +33,7 @@ const userReducer: (
         error: false,
         loading: false,
       };
-    case UserActionType.GET_USER_FAILURE:
+    case UserActionType.GET_USER_ERROR:
       return {
         ...state,
         error: true,
@@ -52,7 +52,7 @@ const userReducer: (
         error: false,
         loading: false,
       };
-    case UserActionType.UPDATE_USER_FAILURE:
+    case UserActionType.UPDATE_USER_ERROR:
       return {
         ...state,
         error: true,

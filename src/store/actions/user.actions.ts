@@ -1,9 +1,9 @@
 import {
-  IGetUserFailureAction,
+  IGetUserErrorAction,
   IGetUserRequestAction,
   IGetUserResponse,
   IGetUserSuccessAction,
-  IUpdateUserFailureAction,
+  IUpdateUserErrorAction,
   IUpdateUserRequestAction,
   IUpdateUserResponse,
   IUpdateUserSuccessAction,
@@ -26,9 +26,9 @@ export const getUserSuccessAction: (
   };
 };
 
-export const getUserFailureAction: () => IGetUserFailureAction = () => {
+export const getUserErrorAction: () => IGetUserErrorAction = () => {
   return {
-    type: UserActionType.GET_USER_FAILURE,
+    type: UserActionType.GET_USER_ERROR,
   };
 };
 
@@ -47,8 +47,8 @@ export const updateUserSuccessAction: (
   };
 };
 
-export const updateUserFailureAction: () => IUpdateUserFailureAction = () => {
+export const updateUserErrorAction: () => IUpdateUserErrorAction = () => {
   return {
-    type: UserActionType.UPDATE_USER_FAILURE,
+    type: UserActionType.UPDATE_USER_ERROR,
   };
 };

@@ -33,7 +33,7 @@ const authReducer: (
         loading: false,
         isLoggedIn: false,
       };
-    case AuthActionType.SIGNUP_FAILURE:
+    case AuthActionType.SIGNUP_ERROR:
       return {
         ...state,
         error: true,
@@ -55,7 +55,7 @@ const authReducer: (
         loading: false,
         isLoggedIn: true,
       };
-    case AuthActionType.LOGIN_FAILURE:
+    case AuthActionType.LOGIN_ERROR:
       return {
         ...state,
         currentUser: null,

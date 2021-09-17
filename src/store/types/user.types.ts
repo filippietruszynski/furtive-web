@@ -20,10 +20,10 @@ export interface IUserState {
 export enum UserActionType {
   GET_USER_REQUEST = "user/getUserRequest",
   GET_USER_SUCCESS = "user/getUserSuccess",
-  GET_USER_FAILURE = "user/getUserFailure",
+  GET_USER_ERROR = "user/getUserError",
   UPDATE_USER_REQUEST = "user/updateUserRequest",
   UPDATE_USER_SUCCESS = "user/updateUserSuccess",
-  UPDATE_USER_FAILURE = "user/updateUserFailure",
+  UPDATE_USER_ERROR = "user/updateUserError",
 }
 
 export interface IUserAction {
@@ -34,8 +34,8 @@ export interface IGetUserRequestAction extends IUserAction {
   type: UserActionType.GET_USER_REQUEST;
 }
 
-export interface IGetUserFailureAction extends IUserAction {
-  type: UserActionType.GET_USER_FAILURE;
+export interface IGetUserErrorAction extends IUserAction {
+  type: UserActionType.GET_USER_ERROR;
 }
 
 export interface IGetUserSuccessAction extends IUserAction {
@@ -47,8 +47,8 @@ export interface IUpdateUserRequestAction extends IUserAction {
   type: UserActionType.UPDATE_USER_REQUEST;
 }
 
-export interface IUpdateUserFailureAction extends IUserAction {
-  type: UserActionType.UPDATE_USER_FAILURE;
+export interface IUpdateUserErrorAction extends IUserAction {
+  type: UserActionType.UPDATE_USER_ERROR;
 }
 
 export interface IUpdateUserSuccessAction extends IUserAction {
