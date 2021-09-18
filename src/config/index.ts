@@ -17,19 +17,19 @@ let envConfig: IEnvConfig;
 
 switch (nodeEnv) {
   case "development":
-    envConfig = envConfigs.devConfig(processEnv);
+    envConfig = envConfigs.devConfig;
     break;
   case "testing":
-    envConfig = envConfigs.testConfig(processEnv);
+    envConfig = envConfigs.testConfig;
     break;
   case "staging":
-    envConfig = envConfigs.stageConfig(processEnv);
+    envConfig = envConfigs.stageConfig;
     break;
   case "production":
-    envConfig = envConfigs.prodConfig(processEnv);
+    envConfig = envConfigs.prodConfig;
     break;
   default:
-    envConfig = envConfigs.devConfig(processEnv);
+    envConfig = envConfigs.devConfig;
 }
 
 const config: IConfig = { ...baseConfig, ...envConfig };
