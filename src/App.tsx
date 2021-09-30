@@ -1,7 +1,7 @@
 import React from "react";
 
-import LogIn from "./views/log-in";
-import SignUp from "./views/sign-up";
+import LogIn from "./views/LogIn";
+import SignUp from "./views/SignUp";
 
 const App: React.FC = () => {
   return (
