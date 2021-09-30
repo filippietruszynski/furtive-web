@@ -54,7 +54,7 @@ export const logIn =
     }
   };
 
-export const logOutUser: () => ApiAction<ILogOutUserAction> =
+export const logOut: () => ApiAction<ILogOutUserAction> =
   () => async (dispatch) => {
     dispatch(logOutUserAction());
   };

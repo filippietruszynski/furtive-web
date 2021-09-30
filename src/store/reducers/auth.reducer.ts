@@ -68,7 +68,7 @@ const authReducer: (
         ...state,
         currentUser: null,
         error: false,
-        loading: true,
+        loading: false,
         isLoggedIn: false,
       };
     }

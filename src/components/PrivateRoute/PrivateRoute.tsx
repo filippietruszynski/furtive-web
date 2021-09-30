@@ -1,37 +1,21 @@
-import React, { useEffect } from "react";
-import { Redirect, Route, RouteProps, useLocation } from "react-router-dom";
+import React from "react";
+import { Redirect, Route, RouteProps } from "react-router-dom";
 
 export interface IPrivateRouteProps extends RouteProps {
-  isAuthenticated: boolean;
+  isLoggedIn: boolean;
   authenticationPath: string;
-  redirectPath: string;
-  setRedirectPath: (path: string) => void;
 }
 
 const PrivateRoute: React.FC<IPrivateRouteProps> = ({
-  isAuthenticated,
+  isLoggedIn,
   authenticationPath,
-  redirectPath,
-  setRedirectPath,
   ...routeProps
 }) => {
-  const currentLocation = useLocation();
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setRedirectPath(currentLocation.pathname);
-    }
-  }, [isAuthenticated, setRedirectPath, currentLocation]);
-
-  if (isAuthenticated && redirectPath === currentLocation.pathname) {
+  if (isLoggedIn) {
     return <Route {...routeProps} />;
   }
 
-  return (
-    <Redirect
-      to={{ pathname: isAuthenticated ? redirectPath : authenticationPath }}
-    />
-  );
+  return <Redirect to={{ pathname: authenticationPath }} />;
 };
 
 export default PrivateRoute;
