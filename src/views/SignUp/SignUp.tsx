@@ -24,9 +24,13 @@ const SignUp: React.FC = () => {
     values: ISignUpRequest,
     { resetForm, setSubmitting }: FormikHelpers<ISignUpRequest>
   ) => {
-    dispatch(signUp(values));
-    resetForm();
-    setSubmitting(false);
+    try {
+      await dispatch(signUp(values));
+      resetForm();
+      setSubmitting(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
