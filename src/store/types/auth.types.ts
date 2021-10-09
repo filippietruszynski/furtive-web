@@ -15,58 +15,58 @@ export interface IAuthState {
 /* ACTIONS */
 
 export enum AuthActionType {
-  SIGNUP_REQUEST = "auth/signUpRequest",
-  SIGNUP_SUCCESS = "auth/signUpSuccess",
-  SIGNUP_ERROR = "auth/signUpError",
-  LOGIN_REQUEST = "auth/logInRequest",
-  LOGIN_SUCCESS = "auth/logInSuccess",
-  LOGIN_ERROR = "auth/logInError",
-  LOGOUT = "auth/logOutUser",
+  SIGNUP_USER_REQUEST = "auth/signUpUserRequest",
+  SIGNUP_USER_SUCCESS = "auth/signUpUserSuccess",
+  SIGNUP_USER_ERROR = "auth/signUpUserError",
+  LOGIN_USER_REQUEST = "auth/logInUserRequest",
+  LOGIN_USER_SUCCESS = "auth/logInUserSuccess",
+  LOGIN_USER_ERROR = "auth/logInUserError",
+  LOGOUT_USER = "auth/logOutUser",
 }
 
 export interface IAuthAction {
   type: AuthActionType;
 }
 
-export interface ISignUpRequestAction extends IAuthAction {
-  type: AuthActionType.SIGNUP_REQUEST;
+export interface ISignUpUserRequestAction extends IAuthAction {
+  type: AuthActionType.SIGNUP_USER_REQUEST;
 }
 
-export interface ISignUpSuccessAction extends IAuthAction {
-  type: AuthActionType.SIGNUP_SUCCESS;
+export interface ISignUpUserSuccessAction extends IAuthAction {
+  type: AuthActionType.SIGNUP_USER_SUCCESS;
 }
 
-export interface ISignUpErrorAction extends IAuthAction {
-  type: AuthActionType.SIGNUP_ERROR;
+export interface ISignUpUserErrorAction extends IAuthAction {
+  type: AuthActionType.SIGNUP_USER_ERROR;
 }
 
-export interface ILogInRequestAction extends IAuthAction {
-  type: AuthActionType.LOGIN_REQUEST;
+export interface ILogInUserRequestAction extends IAuthAction {
+  type: AuthActionType.LOGIN_USER_REQUEST;
 }
 
-export interface ILogInSuccessAction extends IAuthAction {
-  type: AuthActionType.LOGIN_SUCCESS;
+export interface ILogInUserSuccessAction extends IAuthAction {
+  type: AuthActionType.LOGIN_USER_SUCCESS;
   payload: ICurrentUser;
 }
 
-export interface ILogInErrorAction extends IAuthAction {
-  type: AuthActionType.LOGIN_ERROR;
+export interface ILogInUserErrorAction extends IAuthAction {
+  type: AuthActionType.LOGIN_USER_ERROR;
 }
 
 export interface ILogOutUserAction extends IAuthAction {
-  type: AuthActionType.LOGOUT;
+  type: AuthActionType.LOGOUT_USER;
 }
 
 /* API */
 
-export interface ISignUpRequest {
+export interface ISignUpUserRequest {
   email: string;
   password: string;
 }
 
-export interface ILogInRequest {
+export interface ILogInUserRequest {
   email: string;
   password: string;
 }
 
-export type ILogInResponse = Partial<ICurrentUser>;
+export type ILogInUserResponse = Partial<ICurrentUser>;

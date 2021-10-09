@@ -4,13 +4,13 @@ import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import { signUp } from "../../store/services/auth.services";
-import { ISignUpRequest } from "../../store/types/auth.types";
+import { signUpUser } from "../../store/services/auth.services";
+import { ISignUpUserRequest } from "../../store/types/auth.types";
 
 const SignUp: React.FC = () => {
   const dispatch = useDispatch();
 
-  const initialValues: ISignUpRequest = {
+  const initialValues: ISignUpUserRequest = {
     email: "",
     password: "",
   };
@@ -21,11 +21,11 @@ const SignUp: React.FC = () => {
   });
 
   const onSubmit = async (
-    values: ISignUpRequest,
-    { resetForm, setSubmitting }: FormikHelpers<ISignUpRequest>
+    values: ISignUpUserRequest,
+    { resetForm, setSubmitting }: FormikHelpers<ISignUpUserRequest>
   ) => {
     try {
-      await dispatch(signUp(values));
+      await dispatch(signUpUser(values));
       resetForm();
       setSubmitting(false);
     } catch (error) {

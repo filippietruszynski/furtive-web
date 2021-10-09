@@ -1,60 +1,62 @@
-import { logInRequest, signUpRequest } from "../api/auth.api";
+import { logInUserRequest, signUpUserRequest } from "../api/auth.api";
 import {
-  logInErrorAction,
-  logInRequestAction,
-  logInSuccessAction,
+  logInUserErrorAction,
+  logInUserRequestAction,
+  logInUserSuccessAction,
   logOutUserAction,
-  signUpErrorAction,
-  signUpRequestAction,
-  signUpSuccessAction,
+  signUpUserErrorAction,
+  signUpUserRequestAction,
+  signUpUserSuccessAction,
 } from "../actions/auth.actions";
 
 import { ApiAction } from "../types";
 import {
-  ILogInErrorAction,
-  ILogInRequest,
-  ILogInRequestAction,
-  ILogInSuccessAction,
+  ILogInUserErrorAction,
+  ILogInUserRequest,
+  ILogInUserRequestAction,
+  ILogInUserSuccessAction,
   ILogOutUserAction,
-  ISignUpErrorAction,
-  ISignUpRequest,
-  ISignUpRequestAction,
-  ISignUpSuccessAction,
+  ISignUpUserErrorAction,
+  ISignUpUserRequest,
+  ISignUpUserRequestAction,
+  ISignUpUserSuccessAction,
 } from "../types/auth.types";
 
-export const signUp =
+export const signUpUser =
   (
-    request: ISignUpRequest
+    request: ISignUpUserRequest
   ): ApiAction<
-    ISignUpRequestAction | ISignUpSuccessAction | ISignUpErrorAction
+    ISignUpUserRequestAction | ISignUpUserSuccessAction | ISignUpUserErrorAction
   > =>
   async (dispatch) => {
-    dispatch(signUpRequestAction());
+    dispatch(signUpUserRequestAction());
 
     try {
-      await signUpRequest(request);
-      dispatch(signUpSuccessAction());
+      await signUpUserRequest(request);
+      dispatch(signUpUserSuccessAction());
     } catch (error) {
-      dispatch(signUpErrorAction());
+      dispatch(signUpUserErrorAction());
     }
   };
 
-export const logIn =
+export const logInUser =
   (
-    request: ILogInRequest
-  ): ApiAction<ILogInRequestAction | ILogInSuccessAction | ILogInErrorAction> =>
+    request: ILogInUserRequest
+  ): ApiAction<
+    ILogInUserRequestAction | ILogInUserSuccessAction | ILogInUserErrorAction
+  > =>
   async (dispatch) => {
-    dispatch(logInRequestAction());
+    dispatch(logInUserRequestAction());
 
     try {
-      const { data } = await logInRequest(request);
-      dispatch(logInSuccessAction(data));
+      const { data } = await logInUserRequest(request);
+      dispatch(logInUserSuccessAction(data));
     } catch (error) {
-      dispatch(logInErrorAction());
+      dispatch(logInUserErrorAction());
     }
   };
 
-export const logOut: () => ApiAction<ILogOutUserAction> =
+export const logOutUser: () => ApiAction<ILogOutUserAction> =
   () => async (dispatch) => {
     dispatch(logOutUserAction());
   };

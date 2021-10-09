@@ -2,7 +2,7 @@ import {
   IAuthState,
   IAuthAction,
   AuthActionType,
-  ILogInSuccessAction,
+  ILogInUserSuccessAction,
 } from "../types/auth.types";
 
 export const initialState: IAuthState = {
@@ -20,42 +20,42 @@ const authReducer: (
   action: IAuthAction
 ) => {
   switch (action.type) {
-    case AuthActionType.SIGNUP_REQUEST:
+    case AuthActionType.SIGNUP_USER_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
       };
-    case AuthActionType.SIGNUP_SUCCESS:
+    case AuthActionType.SIGNUP_USER_SUCCESS:
       return {
         ...state,
         error: false,
         loading: false,
         isAuthenticated: false,
       };
-    case AuthActionType.SIGNUP_ERROR:
+    case AuthActionType.SIGNUP_USER_ERROR:
       return {
         ...state,
         error: true,
         loading: false,
         isAuthenticated: false,
       };
-    case AuthActionType.LOGIN_REQUEST:
+    case AuthActionType.LOGIN_USER_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
         isAuthenticated: false,
       };
-    case AuthActionType.LOGIN_SUCCESS:
+    case AuthActionType.LOGIN_USER_SUCCESS:
       return {
         ...state,
-        currentUser: (action as ILogInSuccessAction).payload,
+        currentUser: (action as ILogInUserSuccessAction).payload,
         error: false,
         loading: false,
         isAuthenticated: true,
       };
-    case AuthActionType.LOGIN_ERROR:
+    case AuthActionType.LOGIN_USER_ERROR:
       return {
         ...state,
         currentUser: null,
@@ -63,7 +63,7 @@ const authReducer: (
         loading: false,
         isAuthenticated: false,
       };
-    case AuthActionType.LOGOUT: {
+    case AuthActionType.LOGOUT_USER: {
       return {
         ...state,
         currentUser: null,

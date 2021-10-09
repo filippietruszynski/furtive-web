@@ -9,11 +9,11 @@ import NotFound from "./views/NotFound";
 import LandingPage from "./views/LandingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-import { selectIsUserLogged } from "./store/selectors/auth.selectors";
+import { selectIsUserAuthenticated } from "./store/selectors/auth.selectors";
 import { IProtectedRouteProps } from "./components/ProtectedRoute/ProtectedRoute";
 
 const App: React.FC = () => {
-  const isAuthenticated = useSelector(selectIsUserLogged);
+  const isAuthenticated = useSelector(selectIsUserAuthenticated);
 
   const defaultProtectedRouteProps: IProtectedRouteProps = {
     isAuthenticated: isAuthenticated,

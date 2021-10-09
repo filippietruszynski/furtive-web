@@ -1,15 +1,15 @@
 import axiosInstance from "../../utils/axios-instance";
 
 import {
-  ISignUpRequest,
-  ILogInRequest,
-  ILogInResponse,
+  ISignUpUserRequest,
+  ILogInUserRequest,
+  ILogInUserResponse,
 } from "../types/auth.types";
 
-export const signUpRequest = (request: ISignUpRequest) => {
+export const signUpUserRequest = (request: ISignUpUserRequest) => {
   return axiosInstance.post("/signup", request);
 };
 
-export const logInRequest = (request: ILogInRequest) => {
-  return axiosInstance.post<ILogInResponse>("/login", request);
+export const logInUserRequest = (request: ILogInUserRequest) => {
+  return axiosInstance.post<ILogInUserResponse>("/login", request);
 };

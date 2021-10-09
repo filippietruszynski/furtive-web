@@ -4,15 +4,15 @@ import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import { logIn } from "../../store/services/auth.services";
+import { logInUser } from "../../store/services/auth.services";
 
-import { ILogInRequest } from "../../store/types/auth.types";
+import { ILogInUserRequest } from "../../store/types/auth.types";
 
 const LogIn: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const initialValues: ILogInRequest = {
+  const initialValues: ILogInUserRequest = {
     email: "",
     password: "",
   };
@@ -23,11 +23,11 @@ const LogIn: React.FC = () => {
   });
 
   const onSubmit = async (
-    values: ILogInRequest,
-    { resetForm, setSubmitting }: FormikHelpers<ILogInRequest>
+    values: ILogInUserRequest,
+    { resetForm, setSubmitting }: FormikHelpers<ILogInUserRequest>
   ) => {
     try {
-      await dispatch(logIn(values));
+      await dispatch(logInUser(values));
       resetForm();
       setSubmitting(false);
       history.push("/chat");

@@ -1,57 +1,57 @@
 import {
-  ILogInRequestAction,
+  ILogInUserRequestAction,
   AuthActionType,
-  ILogInSuccessAction,
+  ILogInUserSuccessAction,
   ICurrentUser,
-  ILogInErrorAction,
-  ILogInResponse,
+  ILogInUserErrorAction,
+  ILogInUserResponse,
   ILogOutUserAction,
-  ISignUpRequestAction,
-  ISignUpSuccessAction,
-  ISignUpErrorAction,
+  ISignUpUserRequestAction,
+  ISignUpUserSuccessAction,
+  ISignUpUserErrorAction,
 } from "../types/auth.types";
 
-export const signUpRequestAction: () => ISignUpRequestAction = () => {
+export const signUpUserRequestAction: () => ISignUpUserRequestAction = () => {
   return {
-    type: AuthActionType.SIGNUP_REQUEST,
+    type: AuthActionType.SIGNUP_USER_REQUEST,
   };
 };
 
-export const signUpSuccessAction: () => ISignUpSuccessAction = () => {
+export const signUpUserSuccessAction: () => ISignUpUserSuccessAction = () => {
   return {
-    type: AuthActionType.SIGNUP_SUCCESS,
+    type: AuthActionType.SIGNUP_USER_SUCCESS,
   };
 };
 
-export const signUpErrorAction: () => ISignUpErrorAction = () => {
+export const signUpUserErrorAction: () => ISignUpUserErrorAction = () => {
   return {
-    type: AuthActionType.SIGNUP_ERROR,
+    type: AuthActionType.SIGNUP_USER_ERROR,
   };
 };
 
-export const logInRequestAction: () => ILogInRequestAction = () => {
+export const logInUserRequestAction: () => ILogInUserRequestAction = () => {
   return {
-    type: AuthActionType.LOGIN_REQUEST,
+    type: AuthActionType.LOGIN_USER_REQUEST,
   };
 };
 
-export const logInSuccessAction: (
-  response: ILogInResponse
-) => ILogInSuccessAction = (response: ILogInResponse) => {
+export const logInUserSuccessAction: (
+  response: ILogInUserResponse
+) => ILogInUserSuccessAction = (response: ILogInUserResponse) => {
   return {
     payload: response as ICurrentUser,
-    type: AuthActionType.LOGIN_SUCCESS,
+    type: AuthActionType.LOGIN_USER_SUCCESS,
   };
 };
 
-export const logInErrorAction: () => ILogInErrorAction = () => {
+export const logInUserErrorAction: () => ILogInUserErrorAction = () => {
   return {
-    type: AuthActionType.LOGIN_ERROR,
+    type: AuthActionType.LOGIN_USER_ERROR,
   };
 };
 
 export const logOutUserAction: () => ILogOutUserAction = () => {
   return {
-    type: AuthActionType.LOGOUT,
+    type: AuthActionType.LOGOUT_USER,
   };
 };
