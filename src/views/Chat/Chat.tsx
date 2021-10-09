@@ -8,7 +8,8 @@ const Chat: React.FC = () => {
   };
   return (
     <>
-      Chat <button onClick={handleLogOut}>Log Out</button>
+      <h1>Chat</h1>
+      <button onClick={handleLogOut}>Log Out</button>
     </>
   );
 };

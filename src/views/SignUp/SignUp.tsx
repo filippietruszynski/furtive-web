@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
 import { signUp } from "../../store/services/auth.services";
-
 import { ISignUpRequest } from "../../store/types/auth.types";
 
 const SignUp: React.FC = () => {
@@ -31,7 +31,11 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      Sign Up
+      <h1>Sign up</h1>
+      <Link to="/login">Log in</Link>
+      <br />
+      <br />
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -47,6 +51,7 @@ const SignUp: React.FC = () => {
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
+            <span>login</span>
             <input
               type="email"
               name="email"
@@ -55,7 +60,9 @@ const SignUp: React.FC = () => {
               value={values.email}
             />
             {errors.email && touched.email && errors.email}
+            <br />
 
+            <span>password</span>
             <input
               type="password"
               name="password"
@@ -64,6 +71,7 @@ const SignUp: React.FC = () => {
               value={values.password}
             />
             {errors.password && touched.password && errors.password}
+            <br />
 
             <button type="submit" disabled={isSubmitting}>
               Sign up
