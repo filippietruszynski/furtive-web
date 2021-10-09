@@ -16,9 +16,8 @@ const rootReducer = combineReducers({
   user,
 });
 
-const middleware = [thunk];
-
 const persistedState = loadStateFromLocalStorage();
+const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
@@ -26,6 +25,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
+/* TODO: Save only currentUser to localStorage */
 store.subscribe(
   throttle(() => {
     saveStateToLocalStorage({ auth: store.getState().auth });

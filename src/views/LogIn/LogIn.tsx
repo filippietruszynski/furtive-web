@@ -5,6 +5,7 @@ import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
 import { logInUser } from "../../store/services/auth.services";
+import { RoutePaths } from "../../utils/enums";
 
 import { ILogInUserRequest } from "../../store/types/auth.types";
 
@@ -30,7 +31,7 @@ const LogIn: React.FC = () => {
       await dispatch(logInUser(values));
       resetForm();
       setSubmitting(false);
-      history.push("/chat");
+      history.push(RoutePaths.CHAT);
     } catch (error) {
       console.log(error);
     }

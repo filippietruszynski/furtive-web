@@ -11,11 +11,11 @@ const ProtectedRoute: React.FC<IProtectedRouteProps> = ({
   authenticationPath,
   ...routeProps
 }) => {
-  if (isAuthenticated) {
-    return <Route {...routeProps} />;
+  if (!isAuthenticated) {
+    return <Redirect to={{ pathname: authenticationPath }} />;
   }
 
-  return <Redirect to={{ pathname: authenticationPath }} />;
+  return <Route {...routeProps} />;
 };
 
 export default ProtectedRoute;

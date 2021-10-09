@@ -1,42 +1,56 @@
 import React from "react";
+import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
 
 import Chat from "./views/Chat";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import NotFound from "./views/NotFound";
 import LandingPage from "./views/LandingPage";
+import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import { RoutePaths } from "./utils/enums";
 import { selectIsUserAuthenticated } from "./store/selectors/auth.selectors";
-import { IProtectedRouteProps } from "./components/ProtectedRoute/ProtectedRoute";
 
 const App: React.FC = () => {
   const isAuthenticated = useSelector(selectIsUserAuthenticated);
 
-  const defaultProtectedRouteProps: IProtectedRouteProps = {
-    isAuthenticated: isAuthenticated,
-    authenticationPath: "/login",
-  };
-
   return (
-    <>
-      <span>isAuthenticated: {isAuthenticated ? "true" : "false"}</span>
-      <hr />
+    <Switch>
+      <PublicRoute
+        path={RoutePaths.LANDING_PAGE}
+        component={LandingPage}
+        exact
+        isAuthenticated={isAuthenticated}
+        redirectPath={RoutePaths.LOGIN}
+      />
 
-      <Switch>
-        <Route path="/" component={LandingPage} exact={true} />
-        <ProtectedRoute
-          {...defaultProtectedRouteProps}
-          path="/chat"
-          component={Chat}
-        />
-        <Route path="/login" component={LogIn} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </>
+      <ProtectedRoute
+        path={RoutePaths.CHAT}
+        component={Chat}
+        isAuthenticated={isAuthenticated}
+        authenticationPath={RoutePaths.LOGIN}
+      />
+
+      <PublicRoute
+        path={RoutePaths.LOGIN}
+        component={LogIn}
+        isAuthenticated={isAuthenticated}
+        redirectPath={RoutePaths.CHAT}
+        restricted
+      />
+
+      <PublicRoute
+        path={RoutePaths.SIGNUP}
+        component={SignUp}
+        isAuthenticated={isAuthenticated}
+        redirectPath={RoutePaths.CHAT}
+        restricted
+      />
+
+      <PublicRoute path={RoutePaths.NOT_FOUND} component={NotFound} />
+    </Switch>
   );
 };
 

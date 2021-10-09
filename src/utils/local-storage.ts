@@ -1,6 +1,5 @@
 import { IRootState } from "../store/types";
 
-/* https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage */
 /* TODO: Rethink localStorage interaction */
 
 export const loadStateFromLocalStorage = (): IRootState | undefined => {
