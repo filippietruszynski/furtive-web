@@ -7,15 +7,15 @@ import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import NotFound from "./views/NotFound";
 import LandingPage from "./views/LandingPage";
-import PrivateRoute from "./components/PrivateRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import { selectIsUserLogged } from "./store/selectors/auth.selectors";
-import { IPrivateRouteProps } from "./components/PrivateRoute/PrivateRoute";
+import { IProtectedRouteProps } from "./components/ProtectedRoute/ProtectedRoute";
 
 const App: React.FC = () => {
   const isLoggedIn = useSelector(selectIsUserLogged);
 
-  const defaultPrivateRouteProps: IPrivateRouteProps = {
+  const defaultProtectedRouteProps: IProtectedRouteProps = {
     isLoggedIn: isLoggedIn,
     authenticationPath: "/login",
   };
@@ -23,8 +23,8 @@ const App: React.FC = () => {
   return (
     <Switch>
       <Route path="/" component={LandingPage} exact={true} />
-      <PrivateRoute
-        {...defaultPrivateRouteProps}
+      <ProtectedRoute
+        {...defaultProtectedRouteProps}
         path="/chat"
         component={Chat}
       />
