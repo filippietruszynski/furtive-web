@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import { logOut } from "../../store/services/auth.services";
 
 const Chat: React.FC = () => {
+  const dispatch = useDispatch();
+
   const handleLogOut = () => {
-    logOut();
+    dispatch(logOut());
   };
   return (
     <>

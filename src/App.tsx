@@ -21,17 +21,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <Switch>
-      <Route path="/" component={LandingPage} exact={true} />
-      <ProtectedRoute
-        {...defaultProtectedRouteProps}
-        path="/chat"
-        component={Chat}
-      />
-      <Route path="/login" component={LogIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="*" component={NotFound} />
-    </Switch>
+    <>
+      <span>isLoggedIn: {isLoggedIn ? "true" : "false"}</span>
+      <hr />
+
+      <Switch>
+        <Route path="/" component={LandingPage} exact={true} />
+        <ProtectedRoute
+          {...defaultProtectedRouteProps}
+          path="/chat"
+          component={Chat}
+        />
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </>
   );
 };
 
