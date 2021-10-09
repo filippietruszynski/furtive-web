@@ -9,7 +9,7 @@ export interface IAuthState {
   currentUser: ICurrentUser | null;
   error: boolean;
   loading: boolean;
-  isLoggedIn: boolean;
+  isAuthenticated: boolean;
 }
 
 /* ACTIONS */

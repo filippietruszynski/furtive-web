@@ -13,16 +13,16 @@ import { selectIsUserLogged } from "./store/selectors/auth.selectors";
 import { IProtectedRouteProps } from "./components/ProtectedRoute/ProtectedRoute";
 
 const App: React.FC = () => {
-  const isLoggedIn = useSelector(selectIsUserLogged);
+  const isAuthenticated = useSelector(selectIsUserLogged);
 
   const defaultProtectedRouteProps: IProtectedRouteProps = {
-    isLoggedIn: isLoggedIn,
+    isAuthenticated: isAuthenticated,
     authenticationPath: "/login",
   };
 
   return (
     <>
-      <span>isLoggedIn: {isLoggedIn ? "true" : "false"}</span>
+      <span>isAuthenticated: {isAuthenticated ? "true" : "false"}</span>
       <hr />
 
       <Switch>

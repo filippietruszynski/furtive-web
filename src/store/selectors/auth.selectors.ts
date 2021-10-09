@@ -16,5 +16,5 @@ export const selectLoading = (state: IRootState): boolean => {
 };
 
 export const selectIsUserLogged = (state: IRootState): boolean => {
-  return selectAuthState(state).isLoggedIn;
+  return selectAuthState(state).isAuthenticated;
 };

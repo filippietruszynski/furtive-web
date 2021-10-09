@@ -9,7 +9,7 @@ export const initialState: IAuthState = {
   currentUser: null,
   error: false,
   loading: false,
-  isLoggedIn: false,
+  isAuthenticated: false,
 };
 
 const authReducer: (
@@ -31,21 +31,21 @@ const authReducer: (
         ...state,
         error: false,
         loading: false,
-        isLoggedIn: false,
+        isAuthenticated: false,
       };
     case AuthActionType.SIGNUP_ERROR:
       return {
         ...state,
         error: true,
         loading: false,
-        isLoggedIn: false,
+        isAuthenticated: false,
       };
     case AuthActionType.LOGIN_REQUEST:
       return {
         ...state,
         error: false,
         loading: true,
-        isLoggedIn: false,
+        isAuthenticated: false,
       };
     case AuthActionType.LOGIN_SUCCESS:
       return {
@@ -53,7 +53,7 @@ const authReducer: (
         currentUser: (action as ILogInSuccessAction).payload,
         error: false,
         loading: false,
-        isLoggedIn: true,
+        isAuthenticated: true,
       };
     case AuthActionType.LOGIN_ERROR:
       return {
@@ -61,7 +61,7 @@ const authReducer: (
         currentUser: null,
         error: true,
         loading: false,
-        isLoggedIn: false,
+        isAuthenticated: false,
       };
     case AuthActionType.LOGOUT: {
       return {
@@ -69,7 +69,7 @@ const authReducer: (
         currentUser: null,
         error: false,
         loading: false,
-        isLoggedIn: false,
+        isAuthenticated: false,
       };
     }
     default:

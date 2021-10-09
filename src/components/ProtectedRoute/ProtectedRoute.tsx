@@ -2,16 +2,16 @@ import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 
 export interface IProtectedRouteProps extends RouteProps {
-  isLoggedIn: boolean;
+  isAuthenticated: boolean;
   authenticationPath: string;
 }
 
 const ProtectedRoute: React.FC<IProtectedRouteProps> = ({
-  isLoggedIn,
+  isAuthenticated,
   authenticationPath,
   ...routeProps
 }) => {
-  if (isLoggedIn) {
+  if (isAuthenticated) {
     return <Route {...routeProps} />;
   }
 
