@@ -18,38 +18,49 @@ const App: React.FC = () => {
 
   return (
     <Switch>
+      {/* LANDING PAGE */}
       <PublicRoute
         path={RoutePaths.LANDING_PAGE}
-        component={LandingPage}
         exact
         isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.LOGIN}
-      />
+      >
+        <LandingPage />
+      </PublicRoute>
 
+      {/* CHAT */}
       <ProtectedRoute
         path={RoutePaths.CHAT}
-        component={Chat}
         isAuthenticated={isAuthenticated}
         authenticationPath={RoutePaths.LOGIN}
-      />
+      >
+        <Chat />
+      </ProtectedRoute>
 
+      {/* LOG IN */}
       <PublicRoute
         path={RoutePaths.LOGIN}
-        component={LogIn}
         isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.CHAT}
         restricted
-      />
+      >
+        <LogIn />
+      </PublicRoute>
 
+      {/* SIGN UP */}
       <PublicRoute
         path={RoutePaths.SIGNUP}
-        component={SignUp}
         isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.CHAT}
         restricted
-      />
+      >
+        <SignUp />
+      </PublicRoute>
 
-      <PublicRoute path={RoutePaths.NOT_FOUND} component={NotFound} />
+      {/* NOT FOUND */}
+      <PublicRoute path={RoutePaths.NOT_FOUND}>
+        <NotFound />
+      </PublicRoute>
     </Switch>
   );
 };
