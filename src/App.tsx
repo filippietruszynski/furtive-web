@@ -21,9 +21,9 @@ const App: React.FC = () => {
       {/* LANDING PAGE */}
       <PublicRoute
         path={RoutePaths.LANDING_PAGE}
-        exact
-        isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.LOGIN}
+        isAuthenticated={isAuthenticated}
+        exact
       >
         <LandingPage />
       </PublicRoute>
@@ -31,8 +31,8 @@ const App: React.FC = () => {
       {/* CHAT */}
       <ProtectedRoute
         path={RoutePaths.CHAT}
-        isAuthenticated={isAuthenticated}
         authenticationPath={RoutePaths.LOGIN}
+        isAuthenticated={isAuthenticated}
       >
         <Chat />
       </ProtectedRoute>
@@ -40,8 +40,8 @@ const App: React.FC = () => {
       {/* LOG IN */}
       <PublicRoute
         path={RoutePaths.LOGIN}
-        isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.CHAT}
+        isAuthenticated={isAuthenticated}
         restricted
       >
         <LogIn />
@@ -50,8 +50,8 @@ const App: React.FC = () => {
       {/* SIGN UP */}
       <PublicRoute
         path={RoutePaths.SIGNUP}
-        isAuthenticated={isAuthenticated}
         redirectPath={RoutePaths.CHAT}
+        isAuthenticated={isAuthenticated}
         restricted
       >
         <SignUp />
