@@ -1,6 +1,6 @@
 {
   "name": "furtive-web",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Client side of Furtive - JavaScript instant messaging service",
   "main": "build/index.js",
   "private": true,
