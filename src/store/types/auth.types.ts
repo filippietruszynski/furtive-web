@@ -1,15 +1,10 @@
-/* AUTH */
+import { IError } from "./error.types";
+
+/* USER */
 
 export interface ICurrentUser {
   email: string | null;
   token: string | null;
-}
-
-export interface IAuthState {
-  currentUser: ICurrentUser | null;
-  error: boolean;
-  loading: boolean;
-  isAuthenticated: boolean;
 }
 
 /* ACTIONS */
@@ -26,6 +21,7 @@ export enum AuthActionType {
 
 export interface IAuthAction {
   type: AuthActionType;
+  error?: boolean;
 }
 
 export interface ISignUpUserRequestAction extends IAuthAction {
@@ -34,10 +30,6 @@ export interface ISignUpUserRequestAction extends IAuthAction {
 
 export interface ISignUpUserSuccessAction extends IAuthAction {
   type: AuthActionType.SIGNUP_USER_SUCCESS;
-}
-
-export interface ISignUpUserErrorAction extends IAuthAction {
-  type: AuthActionType.SIGNUP_USER_ERROR;
 }
 
 export interface ILogInUserRequestAction extends IAuthAction {
@@ -49,15 +41,20 @@ export interface ILogInUserSuccessAction extends IAuthAction {
   payload: ICurrentUser;
 }
 
-export interface ILogInUserErrorAction extends IAuthAction {
-  type: AuthActionType.LOGIN_USER_ERROR;
-}
-
 export interface ILogOutUserAction extends IAuthAction {
   type: AuthActionType.LOGOUT_USER;
 }
 
-/* API */
+/* REDUCER */
+
+export interface IAuthState {
+  currentUser: ICurrentUser | null;
+  error: IError | null;
+  loading: boolean;
+  isAuthenticated: boolean;
+}
+
+/* SERVICES */
 
 export interface ISignUpUserRequest {
   email: string;

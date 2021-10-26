@@ -1,32 +1,31 @@
 import { logInUserRequest, signUpUserRequest } from "../api/auth.api";
 import {
-  logInUserErrorAction,
   logInUserRequestAction,
   logInUserSuccessAction,
   logOutUserAction,
-  signUpUserErrorAction,
   signUpUserRequestAction,
   signUpUserSuccessAction,
 } from "../actions/auth.actions";
+import { errorActionCreator } from "../actions/error.actions";
 
 import { ApiAction } from "../types";
 import {
-  ILogInUserErrorAction,
+  AuthActionType,
   ILogInUserRequest,
   ILogInUserRequestAction,
   ILogInUserSuccessAction,
   ILogOutUserAction,
-  ISignUpUserErrorAction,
   ISignUpUserRequest,
   ISignUpUserRequestAction,
   ISignUpUserSuccessAction,
 } from "../types/auth.types";
+import { IErrorAction } from "../types/error.types";
 
 export const signUpUser =
   (
     request: ISignUpUserRequest
   ): ApiAction<
-    ISignUpUserRequestAction | ISignUpUserSuccessAction | ISignUpUserErrorAction
+    ISignUpUserRequestAction | ISignUpUserSuccessAction | IErrorAction
   > =>
   async (dispatch) => {
     dispatch(signUpUserRequestAction());
@@ -35,7 +34,7 @@ export const signUpUser =
       await signUpUserRequest(request);
       dispatch(signUpUserSuccessAction());
     } catch (error) {
-      dispatch(signUpUserErrorAction());
+      // dispatch(signUpUserErrorAction());
     }
   };
 
@@ -43,7 +42,7 @@ export const logInUser =
   (
     request: ILogInUserRequest
   ): ApiAction<
-    ILogInUserRequestAction | ILogInUserSuccessAction | ILogInUserErrorAction
+    ILogInUserRequestAction | ILogInUserSuccessAction | IErrorAction
   > =>
   async (dispatch) => {
     dispatch(logInUserRequestAction());
@@ -52,7 +51,14 @@ export const logInUser =
       const { data } = await logInUserRequest(request);
       dispatch(logInUserSuccessAction(data));
     } catch (error) {
-      dispatch(logInUserErrorAction());
+      if (error.response) {
+        dispatch(
+          errorActionCreator(
+            AuthActionType.LOGIN_USER_ERROR,
+            error.response.data
+          )
+        );
+      }
     }
   };
 

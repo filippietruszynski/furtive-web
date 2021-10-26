@@ -1,3 +1,5 @@
+import errorReducer from "./error.reducer";
+
 import {
   IAuthState,
   IAuthAction,
@@ -6,70 +8,67 @@ import {
 } from "../types/auth.types";
 
 export const initialState: IAuthState = {
-  currentUser: null,
-  error: false,
+  error: null,
   loading: false,
   isAuthenticated: false,
+  currentUser: null,
 };
 
-const authReducer: (
-  state: IAuthState | undefined,
-  action: IAuthAction
-) => IAuthState = (
+const authReducer = (
   state: IAuthState | undefined = initialState,
   action: IAuthAction
-) => {
+): IAuthState => {
   switch (action.type) {
     case AuthActionType.SIGNUP_USER_REQUEST:
       return {
         ...state,
-        error: false,
+        ...errorReducer,
         loading: true,
       };
     case AuthActionType.SIGNUP_USER_SUCCESS:
       return {
         ...state,
-        error: false,
+        ...errorReducer,
         loading: false,
         isAuthenticated: false,
       };
     case AuthActionType.SIGNUP_USER_ERROR:
       return {
         ...state,
-        error: true,
+        ...errorReducer,
         loading: false,
         isAuthenticated: false,
       };
     case AuthActionType.LOGIN_USER_REQUEST:
       return {
         ...state,
-        error: false,
+        ...errorReducer,
         loading: true,
         isAuthenticated: false,
       };
     case AuthActionType.LOGIN_USER_SUCCESS:
       return {
         ...state,
-        currentUser: (action as ILogInUserSuccessAction).payload,
-        error: false,
+        ...errorReducer(state, action),
         loading: false,
         isAuthenticated: true,
+        currentUser: (action as ILogInUserSuccessAction).payload,
       };
     case AuthActionType.LOGIN_USER_ERROR:
       return {
         ...state,
-        currentUser: null,
-        error: true,
+        ...errorReducer,
         loading: false,
         isAuthenticated: false,
+        currentUser: null,
       };
     case AuthActionType.LOGOUT_USER: {
       return {
         ...state,
-        currentUser: null,
-        error: false,
+        ...errorReducer,
         loading: false,
         isAuthenticated: false,
+        currentUser: null,
       };
     }
     default:

@@ -7,10 +7,6 @@ export const selectCurrentUser = (state: IRootState): ICurrentUser | null => {
   return selectAuthState(state).currentUser;
 };
 
-export const selectError = (state: IRootState): boolean => {
-  return selectAuthState(state).error;
-};
-
 export const selectLoading = (state: IRootState): boolean => {
   return selectAuthState(state).loading;
 };

@@ -9,12 +9,6 @@ export interface IUser {
   __v: number;
 }
 
-export interface IUserState {
-  user: IUser | null;
-  error: boolean;
-  loading: boolean;
-}
-
 /* ACTIONS */
 
 export enum UserActionType {
@@ -28,6 +22,7 @@ export enum UserActionType {
 
 export interface IUserAction {
   type: UserActionType;
+  error?: boolean;
 }
 
 export interface IGetUserRequestAction extends IUserAction {
@@ -56,7 +51,15 @@ export interface IUpdateUserSuccessAction extends IUserAction {
   payload: IUser;
 }
 
-/* API */
+/* REDUCER */
+
+export interface IUserState {
+  user: IUser | null;
+  error: boolean;
+  loading: boolean;
+}
+
+/* SERVICES */
 
 export interface IUpdateUserRequest {
   email?: string;
